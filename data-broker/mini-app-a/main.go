@@ -19,4 +19,11 @@ func main() {
 	}
 
 	fmt.Println("👤 User Data from Mini-App B:", result)
+
+	result2, err := sdk.CallFunction("mini-app-a", "mini-app-b", "getSettings", nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("⚙️ Settings from Mini-App B:", result2)
 }
