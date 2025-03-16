@@ -13,14 +13,14 @@ func main() {
 	sdk.Register("mini-app-a", []string{"getProfile", "getBalance"})
 
 	// ✅ Call Mini-App B's getUser function
-	result, err := sdk.CallFunction("mini-app-a", "mini-app-b", "getUser", map[string]interface{}{"userId": 123})
+	result, err := sdk.CallFunction("http://host.docker.internal:3001", "mini-app-a", "mini-app-b", "getUser", map[string]interface{}{"userId": 123})
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	fmt.Println("👤 User Data from Mini-App B:", result)
 
-	result2, err := sdk.CallFunction("mini-app-a", "mini-app-b", "getSettings", nil)
+	result2, err := sdk.CallFunction("http://host.docker.internal:3001", "mini-app-a", "mini-app-b", "getSettings", nil)
 	if err != nil {
 		log.Fatal(err)
 	}
